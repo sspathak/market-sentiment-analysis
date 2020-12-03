@@ -4,11 +4,11 @@ from bs4 import BeautifulSoup
 l=[]
 
 
-baseURL='https://www.marketwatch.com/search?q=TSLA&m=Ticker&rpp=100&mp=0&bd=true&bd=false&bdv=03%2F31%2F2020&rs=true'
+baseURL='https://www.marketwatch.com/search?q=TSLA&m=Ticker&rpp=100&mp=0&bd=true&bd=false&bdv=05%2F31%2F2020&rs=true'
 urls=[baseURL]
 for i in range(1,13):
     urls.append(baseURL+'&o='+str(i*100+1))
-print urls
+# print urls
 
 
 for u in urls:
@@ -19,4 +19,4 @@ for u in urls:
         if x.find('story')>=0 and x.find('http')>=0: l.append(x)
 
 
-for x in l: print x    
+for x in l: print(x)
