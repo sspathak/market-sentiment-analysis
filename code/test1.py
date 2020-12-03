@@ -1,20 +1,25 @@
 import requests
 from bs4 import BeautifulSoup
 import re, datetime
-    
+
 def getText(u):
     z=""
     html_text1 = requests.get(u).text
     soup1 = BeautifulSoup(html_text1, 'html.parser')
     article= soup1.find(id="js-article__body")
     if article==None: return('  ')
-    for x in article.find_all('a'): x.string=""
+    #for x in article.find_all('a'): x.string=""
     for x in article.find_all('p'):
-        z=z+(x.get_text())
+        tt=x.get_text()
+        if tt.startswith("Email:"): continue
+        if tt.startswith("More Premier League news:"): continue
+        if tt.startswith("Read more:"): continue
+        z=z+tt
         z= z.replace('\r', '').replace('\n', '')
         while '  ' in z:
             z = z.replace('  ', ' ')
     return(z)
+
 
 f=open("urls")
 urls=[]
@@ -40,8 +45,8 @@ for i in range(1,len(dates)):
 
 for i in range(len(urls)):
     url=urls[i]
-    print url
+    print(url)
     t=getText(url)
     out = open(dates[i], "w")
-    out.write(t.encode("utf-8"))
+    out.write("utf-8")
 
