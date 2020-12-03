@@ -48,5 +48,5 @@ for i in range(len(urls)):
     print(url)
     t=getText(url)
     out = open(dates[i], "w")
-    out.write("utf-8")
+    out.write(t)
 
