@@ -3,8 +3,8 @@ from bs4 import BeautifulSoup
 
 l=[]
 
-
-baseURL='https://www.marketwatch.com/search?q=TSLA&m=Ticker&rpp=100&mp=0&bd=true&bd=false&bdv=05%2F31%2F2020&rs=true'
+ticker_name = 'TSLA'
+baseURL='https://www.marketwatch.com/search?q=' + ticker_name + '&m=Ticker&rpp=100&mp=0&bd=true&bd=false&bdv=05%2F31%2F2020&rs=true'
 urls=[baseURL]
 for i in range(1,13):
     urls.append(baseURL+'&o='+str(i*100+1))
